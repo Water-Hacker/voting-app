@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono&display=swap');
+
+/* Root variables for dark theme colors */
+:root {
+  --color-bg-dark: #0a0a12;
+  --color-bg-alt: #12121b;
+  --color-primary: #00ffea;
+  --color-primary-hover: #00d8cc;
+  --color-text-main: #e0e6f3;
+  --color-text-muted: #7a7f98;
+  --color-accent: #ff3f81;
+  --color-border: #1f1f2a;
+  --color-shadow: rgba(0, 255, 234, 0.2);
+}
+
+/* Apply dark theme background and text */
+body {
+  @apply bg-[var(--color-bg-dark)] text-[var(--color-text-main)] font-sans leading-relaxed;
+  font-family: 'Roboto Mono', monospace;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-hover);
+}
+
+/* Headings with futuristic glow */
+h1, h2, h3, h4 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--color-primary);
+  text-shadow: 0 0 8px var(--color-primary), 0 0 20px var(--color-primary-hover);
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  transition: color 0.3s;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-primary-hover);
+  text-shadow: 0 0 6px var(--color-primary-hover);
+}
+
+/* Buttons */
+button {
+  @apply rounded-lg px-5 py-2 font-semibold transition-shadow duration-300;
+  background-color: var(--color-primary);
+  color: var(--color-bg-dark);
+  box-shadow: 0 0 10px var(--color-shadow);
+}
+button:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: 0 0 15px var(--color-primary-hover);
+}
+
+/* Inputs and selects */
+input, select, textarea {
+  @apply bg-[var(--color-bg-alt)] text-[var(--color-text-main)] border border-[var(--color-border)] rounded-md px-4 py-2 outline-none transition-colors duration-300;
+  font-family: 'Roboto Mono', monospace;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary);
+  background-color: #10101a;
+}
+
+/* Card style */
+.card {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 0 15px var(--color-shadow);
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px var(--color-primary-hover);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--color-text-main);
+}
+th, td {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+th {
+  background-color: var(--color-bg-dark);
+  color: var(--color-primary);
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive utility overrides */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+  h1, h2, h3 {
+    text-shadow: none;
+  }
+  button {
+    width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px var(--color-primary);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--color-primary-hover);
+  }
+}
+.glow {
+  animation: pulse-glow 2.5s infinite ease-in-out;
+}
+
+/* Utility class for subtle fade-in */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
